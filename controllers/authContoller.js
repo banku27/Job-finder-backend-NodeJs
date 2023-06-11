@@ -17,9 +17,28 @@ module.exports = {
             res.status(500).json(error)
         }
     },
+
+
     // updateUser: async (req, res) => {
         
     // },
+
+    //login function 
+    loginUser: async (req,res)=>{
+        try {
+            const user = await User.findOne({ email: req.body.email });
+            !user && res.status(401).json("User Not Found");
+
+            const decryptedpass=CryptoJS.AES.decrypt(user.password, process.env.SECRET)
+            const depassword=decryptedpass.toString(CryptoJS.enc.Utf8);
+
+            depassword !== req.body.password && res.status(401).json('Wrong Password');
+
+            res.status(200).json(user);
+        } catch (error) {
+            res.status(error)
+        }
+    }
 
 
 }
