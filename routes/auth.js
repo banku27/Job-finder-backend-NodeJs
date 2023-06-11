@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const authController = require("../controllers/authContoller");
-
+// const jwt =  require("jsonwebtoken");
 
 // REGISTRATION 
 
