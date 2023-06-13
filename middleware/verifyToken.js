@@ -21,7 +21,14 @@ const verifyToken = (req,res,next)=> {
     }
 }
 
+const verifyAndAuthorization = (req,res,next) => {
+    if(req.user.id ===req.params.id){
+        next();
+    }else{
+        res.status(403).json("You are restricted from performing this operation")
+    }
+
+}
 
 
-
-module.exports = {verifyToken,};
+module.exports = {verifyToken,verifyAndAuthorization};
