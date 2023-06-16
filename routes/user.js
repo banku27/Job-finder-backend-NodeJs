@@ -8,7 +8,7 @@ const router = require("express").Router();
 
 router.put("/:id",verifyAndAuthorization, userController.updateUser);
 
-// LOGIN 
-// router.post("/login", authController.loginUser);
+// Delete user 
+router.delete("/:id", userController.deleteUser);
 
 module.exports = router

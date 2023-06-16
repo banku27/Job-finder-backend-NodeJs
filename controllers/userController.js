@@ -18,4 +18,13 @@ module.exports = {
     }
     },
 
+    deleteUser: async (req,res)=>{
+    try {
+        await User.findByIdAndDelete(req.params.id)
+        res.status(200).json("Account Successfully Deleted");
+    } catch (error) {
+        res.status(500).json(error);
+    }
+    }
+
 }
