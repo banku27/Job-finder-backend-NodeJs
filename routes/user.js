@@ -1,5 +1,5 @@
 const userController = require("../controllers/userController");
-const { verifyAndAuthorization , verifyToken } = require("../middleware/verifyToken");
+const { verifyAndAuthorization , verifyToken, verifyAndAdmin } = require("../middleware/verifyToken");
 
 const router = require("express").Router();
 // const jwt =  require("jsonwebtoken");
@@ -9,9 +9,14 @@ const router = require("express").Router();
 router.put("/:id",verifyAndAuthorization, userController.updateUser);
 
 // Delete user 
-router.delete("/:id", userController.deleteUser);
+router.delete("/:id",verifyAndAuthorization, userController.deleteUser);
 
 //get user
-router.get("/:id", userController.getUser);
+router.get("/:id",verifyAndAuthorization, userController.getUser);
+
+//get all users
+router.get("/", verifyAndAdmin, userController.getAllUsers);
+
+
 
 module.exports = router

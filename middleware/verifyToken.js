@@ -30,6 +30,15 @@ const verifyAndAuthorization = (req,res,next) => {
     }
 })
 }
+const verifyAndAdmin = (req,res,next) => {
+ verifyToken(req,res,()=>{  
+     if(req.user.isAdmin){
+        next();
+    }else{
+        res.status(403).json("You are restricted from performing this operation")
+    }
+})
+}
 
 
-module.exports = {verifyToken,verifyAndAuthorization};
+module.exports = {verifyToken,verifyAndAuthorization,verifyAndAdmin};
