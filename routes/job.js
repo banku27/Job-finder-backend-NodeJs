@@ -5,7 +5,6 @@ const router = require("express").Router();
 // const jwt =  require("jsonwebtoken");
 
 // Post Job 
-
 router.post("/",verifyAndAdmin, jobController.createJob);
 
 // Delete jOB 
@@ -21,6 +20,6 @@ router.get("/:id", jobController.getJob);
 router.get("/", jobController.getAllJobs);
 
 //Search Job    
-// router.get("/search/:key", jobController.searchJobs);
+router.get("/search/:key", jobController.searchJobs);
 
 module.exports = router
