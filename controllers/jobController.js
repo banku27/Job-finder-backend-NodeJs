@@ -26,5 +26,15 @@ module.exports = {
     }
     },
 
+    deleteJob: async (req, res) => {
+    try{
+        const deleteJob= await Job.findByIdAndDelete(req.params.id);
+        // const {__v,createdAt,updatedAt, ...updatedJobInfo }=updateJob._doc;
+        res.status(200).json("Job Successfully Deleted");
+    } catch (error) {
+        res.status(500).json(error)
+    }
+    },
+
 
 }

@@ -9,7 +9,7 @@ const router = require("express").Router();
 router.post("/",verifyAndAdmin, jobController.createJob);
 
 // Delete jOB 
-// router.delete("/:id",verifyAndAuthorization, jobController.deleteJob);
+router.delete("/:id",verifyAndAdmin, jobController.deleteJob);
 
 // Update Job
 router.put("/:id",verifyAndAdmin, jobController.updateJob);
