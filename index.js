@@ -5,6 +5,7 @@ const mongoose = require('mongoose')
 const authRoute = require("./routes/auth")
 const userRoute = require("./routes/user")
 const jobRoute = require("./routes/job")
+const bookmarkRoute = require("./routes/bookmark")
 
 dotenv.config();
 // get variables from .env file || process.env.VARIABLE_NAME
@@ -16,6 +17,7 @@ app.use(express.json());
 app.use("/api/",authRoute);
 app.use("/api/users",userRoute);
 app.use("/api/jobs",jobRoute);
+app.use("/api/bookmarks",bookmarkRoute);
 
 app.listen(process.env.PORT||5002, () => console.log(`Example app listening on port ${process.env.PORT}!`))
 // here 5002 is an alternative if 5001 does not work then 5002 port will be started. 
