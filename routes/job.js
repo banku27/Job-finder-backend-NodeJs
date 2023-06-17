@@ -12,7 +12,7 @@ router.post("/",verifyAndAdmin, jobController.createJob);
 // router.delete("/:id",verifyAndAuthorization, jobController.deleteJob);
 
 // Update Job
-// router.delete("/:id",verifyAndAuthorization, jobController.updateJob);
+router.put("/:id",verifyAndAdmin, jobController.updateJob);
 
 //get user
 // router.get("/:id", jobController.getJob);
