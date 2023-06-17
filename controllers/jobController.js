@@ -35,6 +35,24 @@ module.exports = {
         res.status(500).json(error)
     }
     },
+    getJob: async (req, res) => {
+    try{
+        const job= await Job.findById(req.params.id);
+        // const {__v,createdAt,updatedAt, ...updatedJobInfo }=updateJob._doc;
+        res.status(200).json(job);
+    } catch (error) {
+        res.status(500).json(error)
+    }
+    },
+
+    getAllJobs: async (req,res)=>{
+        try {
+         const allJobs=await Job.find();
+            res.status(200).json(allJobs);
+        } catch (error) {
+            res.status(500).json(error);
+        }
+        }
 
 
 }

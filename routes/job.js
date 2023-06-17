@@ -14,11 +14,11 @@ router.delete("/:id",verifyAndAdmin, jobController.deleteJob);
 // Update Job
 router.put("/:id",verifyAndAdmin, jobController.updateJob);
 
-//get user
-// router.get("/:id", jobController.getJob);
+//get Job
+router.get("/:id", jobController.getJob);
 
-//get all users
-// router.get("/", jobController.getAllJobs);
+//get all Jobs
+router.get("/", jobController.getAllJobs);
 
 //Search Job    
 // router.get("/search/:key", jobController.searchJobs);
