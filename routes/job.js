@@ -6,17 +6,21 @@ const router = require("express").Router();
 
 // Post Job 
 
-router.post("/",verifyAndAuthorization, jobController.updateUser);
+router.post("/",verifyAndAdmin, jobController.createJob);
 
-// Delete user 
-// router.delete("/:id",verifyAndAuthorization, jobController.deleteUser);
+// Delete jOB 
+// router.delete("/:id",verifyAndAuthorization, jobController.deleteJob);
+
+// Update Job
+// router.delete("/:id",verifyAndAuthorization, jobController.updateJob);
 
 //get user
-// router.get("/:id",verifyAndAuthorization, jobController.getUser);
+// router.get("/:id", jobController.getJob);
 
 //get all users
-// router.get("/", verifyAndAdmin, jobController.getAllUsers);
+// router.get("/", jobController.getAllJobs);
 
-
+//Search Job    
+// router.get("/search/:key", jobController.searchJobs);
 
 module.exports = router
