@@ -6,10 +6,10 @@ const router = require("express").Router();
 
 // Update User 
 
-router.put("/:id",verifyAndAuthorization, userController.updateUser);
+router.put("/",verifyAndAuthorization, userController.updateUser);
 
 // Delete user 
-router.delete("/:id",verifyAndAuthorization, userController.deleteUser);
+router.delete("/",verifyAndAuthorization, userController.deleteUser);
 
 //get user
 router.get("/:id",verifyAndAuthorization, userController.getUser);
