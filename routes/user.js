@@ -12,7 +12,7 @@ router.put("/",verifyAndAuthorization, userController.updateUser);
 router.delete("/",verifyAndAuthorization, userController.deleteUser);
 
 //get user
-router.get("/:id",verifyAndAuthorization, userController.getUser);
+router.get("/",verifyAndAuthorization, userController.getUser);
 
 //get all users
 router.get("/", verifyAndAdmin, userController.getAllUsers);
