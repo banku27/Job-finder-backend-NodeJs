@@ -8,11 +8,10 @@ module.exports = {
         try {
             const job=await Job.findById(jobID);
             if(!job){
-                return res.status(404).json({error:"Job not found"})
+                return res.status(404).json({error:"Job not found"});
             }
-            const newBook =new BookMark({
-                job: job,userId:req.user.id
-            });
+            const newBook =new Bookmark({
+                job: job,userId:req.user.id});
             const savedBookmark=await newBook.save();
             const {__v,updatedAt, ...newBookmarkInfo}=savedBookmark._doc;
             res.status(201).json(newBookmarkInfo);
@@ -32,7 +31,7 @@ module.exports = {
         getBookmarks: async (req, res) => {
             try{
                 const bookmarks= await Bookmark.find({
-                    userId:req.params.userId
+                    userId:req.user.id
                 });
                 // const {__v,createdAt,updatedAt, ...updatedJobInfo }=updateJob._doc;
                 res.status(200).json(bookmarks);

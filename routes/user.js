@@ -15,7 +15,7 @@ router.delete("/",verifyAndAuthorization, userController.deleteUser);
 router.get("/",verifyAndAuthorization, userController.getUser);
 
 //get all users
-router.get("/", verifyAndAdmin, userController.getAllUsers);
+router.get("/all", userController.getAllUsers);
 
 
 
