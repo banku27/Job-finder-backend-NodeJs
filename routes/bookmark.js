@@ -9,7 +9,7 @@ router.post("/",verifyAndAuthorization, bookmarkController.createBookmark);
 
 // DELETE BOOKMARKS
 
-router.delete("/:id",verifyToken, bookmarkController.deleteBookmark);
+router.delete("/:id",verifyAndAuthorization, bookmarkController.deleteBookmark);
 
 
 // GET BOOKMARKS
