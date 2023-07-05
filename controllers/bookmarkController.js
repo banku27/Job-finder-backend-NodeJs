@@ -32,13 +32,13 @@ module.exports = {
         getBookmarks: async (req, res) => {
             try{
                 const bookmarks= await Bookmark.find({
-                    userId:req.params.userId
-                });
+                    userId:req.user.id,
+                }).populate('job'); 
                 // const {__v,createdAt,updatedAt, ...updatedJobInfo }=updateJob._doc;
                 res.status(200).json(bookmarks);
             } catch (error) {
                 res.status(500).json(error)
             }
-            },
+      },
 
 }
