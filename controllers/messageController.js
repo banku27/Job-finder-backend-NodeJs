@@ -14,10 +14,21 @@ module.exports = {
             const skipMessages= (page-1) * pageSize;
 
             //find messages with pagination
-            var message= await Message.find({chat:req.params.id})
+            var messages= await Message.find({chat:req.params.id})
+            .populate("sender", "username profile email")
+            .populate('chat')
+            .sort({createdAt:-1}).skip(skipMessages)   // sort message by descending order
+            .limit(pageSize)  // limit the number of messsages per page
+
+            messages = await User.populate(messages,{
+                path:"chat.users",
+                select:"username profile email"
+            });
+
+            res.json(messages);
             
         } catch (error) {
-            
+            res.status(500).json({error:"Couldn't retrive messages"});
         }
     },
     sendMessage: async (req,res)=>{
