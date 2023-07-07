@@ -7,6 +7,14 @@ module.exports = {
     getAllMessage: async (req,res)=>{
 
         try {
+            const pageSize=12;//Number of messages per page
+            const page = req.query.page ||1 // Current Page number
+
+            //calculate the number of messages to skip
+            const skipMessages= (page-1) * pageSize;
+
+            //find messages with pagination
+            var message= await Message.find({chat:req.params.id})
             
         } catch (error) {
             
