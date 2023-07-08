@@ -1,12 +1,13 @@
 const router = require("express").Router();
+const messageController = require("../controllers/messageController");
 const { verifyAndAuthorization , verifyToken, verifyAndAdmin } = require("../middleware/verifyToken");
 
 //Send Messages
-router.post("/",verifyAndAuthorization, bookmarkController.createBookmark);
+router.post("/",verifyAndAuthorization, messageController.sendMessage);
 
 
 // GET All Messages
-router.get("/:id",verifyAndAuthorization, bookmarkController.getBookmarks);
+router.get("/:id",verifyAndAuthorization,messageController.getAllMessage);
 
 
 
